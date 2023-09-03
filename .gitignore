@@ -1,1 +1,14 @@
 /.idea
+*.log
+hs_err_pid*
+*.class
+.mtj.tmp/
+
+### Gradle ###
+.gradle
+/build/
+
+# Package Files #
+*.jar
+*.war
+*.ear
