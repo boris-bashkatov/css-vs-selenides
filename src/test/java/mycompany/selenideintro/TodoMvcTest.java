@@ -1,11 +1,10 @@
 package mycompany.selenideintro;
 
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.CollectionCondition.*;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
 
-
+import static com.codeborne.selenide.CollectionCondition.exactTexts;
+import static com.codeborne.selenide.Selenide.*;
 
 public class TodoMvcTest {
 
@@ -16,11 +15,11 @@ public class TodoMvcTest {
         $("#new-todo").append("a").pressEnter();
         $("#new-todo").append("b").pressEnter();
         $("#new-todo").append("c").pressEnter();
-        $$("#todo-list>li").shouldHave(exactTexts("a","b","c"));
+        $$("#todo-list>li").shouldHave(exactTexts("a", "b", "c"));
 
         $("#todo-list>li:nth-of-type(2) .toggle").click();
 
         $$("#todo-list>li.completed").shouldHave(exactTexts("b"));
-        $$("#todo-list>li:not(.completed)").shouldHave(exactTexts("a","c"));
+        $$("#todo-list>li:not(.completed)").shouldHave(exactTexts("a", "c"));
     }
 }
