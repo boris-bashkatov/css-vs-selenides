@@ -3,6 +3,7 @@
 hs_err_pid*
 *.class
 .mtj.tmp/
+.DS_Store
 
 ### Gradle ###
 .gradle
