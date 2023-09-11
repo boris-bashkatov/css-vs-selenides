@@ -18,7 +18,8 @@ public class TodoMvcTest {
         $x("//*[@id='new-todo']").append("c").pressEnter();
         $$x("//*[@id='todo-list']//li").shouldHave(exactTexts("a", "b", "c"));
 
-        $x("//*[@id='todo-list']//li[.//text()[normalize-space() = 'b']]//*[contains(concat(' ', @class, ' '), ' toggle ')]").click();
+        $x("//*[@id='todo-list']//li[.//text()[normalize-space() = 'b']]//*[contains(concat(' ', @class, ' '), ' toggle ')]")
+                .click();
 
         $$x("//*[@id='todo-list']//li[not(contains(concat(' ', normalize-space(@class), ' '),' completed '))]")
                 .shouldHave(exactTexts("a", "c"));
