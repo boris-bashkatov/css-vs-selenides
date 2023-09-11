@@ -1,4 +1,4 @@
-package mycompany.selenideintro;
+package mycompany.selenideintro.cssversions;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.CollectionCondition.exactTexts;
 import static com.codeborne.selenide.Selenide.*;
 
-public class TodoMvcCssTest {
+public class TodoMvcTest {
 
     @Test
     void todoCompletion() {
