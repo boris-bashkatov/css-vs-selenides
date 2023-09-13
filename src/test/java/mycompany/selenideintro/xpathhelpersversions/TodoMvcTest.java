@@ -1,10 +1,11 @@
-package mycompany.selenideintro.xpathversions;
+package mycompany.selenideintro.xpathhelpersversions;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.exactTexts;
 import static com.codeborne.selenide.Selenide.*;
+import static utils.XpathHelpers.normalizeClassName;
 
 public class TodoMvcTest {
 
@@ -18,12 +19,12 @@ public class TodoMvcTest {
         $x("//*[@id='new-todo']").append("c").pressEnter();
         $$x("//*[@id='todo-list']//li").shouldHave(exactTexts("a", "b", "c"));
 
-        $x("//*[@id='todo-list']//li[.//text()[normalize-space() = 'b']]//*[contains(concat(' ', normalize-space(@class), ' '), ' toggle ')]")
+        $x("//*[@id='todo-list']//li[.//text()[normalize-space() = 'b']]//*[" + normalizeClassName("toggle") + "]")
                 .click();
 
-        $$x("//*[@id='todo-list']//li[not(contains(concat(' ', normalize-space(@class), ' '),' completed '))]")
+        $$x("//*[@id='todo-list']//li[not(" + normalizeClassName("completed") + ")]")
                 .shouldHave(exactTexts("a", "c"));
-        $$x("//*[@id='todo-list']//li[(contains(concat(' ', normalize-space(@class), ' '),' completed '))]")
+        $$x("//*[@id='todo-list']//li[" + normalizeClassName("completed") + "]")
                 .shouldHave(exactTexts("b"));
 
     }
