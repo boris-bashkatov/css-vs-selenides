@@ -1,11 +1,12 @@
-package mycompany.selenideintro.xpathversions.refactorwithhelpers;
+package mycompany.selenideintro.xpathversions.refactoredwithhelpers;
 
 import com.codeborne.selenide.Configuration;
+import mycompany.selenideintro.utils.selectors.Xpath;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.exactTexts;
 import static com.codeborne.selenide.Selenide.*;
-import static mycompany.selenideintro.utils.Xpath.*;
+
 
 public class TodoMvcTest {
 
@@ -21,11 +22,11 @@ public class TodoMvcTest {
                 .shouldHave(exactTexts("a", "b", "c"));
 
         $x("//*[@id='todo-list']//li[.//text()[normalize-space() = 'b']]//*" +
-                FilterBy.hasCssClass("toggle")).click();
+                Xpath.FilterBy.hasCssClass("toggle")).click();
 
-        $$x("//*[@id='todo-list']//li" + FilterBy.noCssClass("completed"))
+        $$x("//*[@id='todo-list']//li" + Xpath.FilterBy.noCssClass("completed"))
                 .shouldHave(exactTexts("a", "c"));
-        $$x("//*[@id='todo-list']//li" + FilterBy.hasCssClass("completed"))
+        $$x("//*[@id='todo-list']//li" + Xpath.FilterBy.hasCssClass("completed"))
                 .shouldHave(exactTexts("b"));
 
     }
