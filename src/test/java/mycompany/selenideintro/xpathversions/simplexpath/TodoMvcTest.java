@@ -1,4 +1,4 @@
-package mycompany.selenideintro.xpathversions;
+package mycompany.selenideintro.xpathversions.simplexpath;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;

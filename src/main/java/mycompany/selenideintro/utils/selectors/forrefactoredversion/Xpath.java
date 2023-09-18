@@ -1,4 +1,4 @@
-package mycompany.selenideintro.utils.selectors;
+package mycompany.selenideintro.utils.selectors.forrefactoredversion;
 
 public class Xpath {
     public static String cssClass(String name) {
