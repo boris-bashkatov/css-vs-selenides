@@ -1,46 +1,45 @@
 package mycompany.selenideintro.utils.selectors.dsl;
 
 public class X {
-    private String locator;
+    private final String selector;
 
-    public X(String locator) {
-        this.locator = locator;
+    public X(String selector) {
+        this.selector = selector;
     }
 
+
     public static X any() {
+
         return new X("//*");
     }
 
     public String x() {
-        return this.locator;
+        return this.selector;
     }
 
     public X descendant(String element) {
-        this.locator += ("//" + element);
-        return this;
+        return new X(this.selector + "//" + element);
     }
 
     public X descendant() {
-        return this.descendant("*");
+
+        return new X(this.selector + "//*");
     }
 
     public X child(String element) {
-        this.locator += "/" + element;
-        return this;
+        return new X(this.selector + "/" + element);
     }
 
     public X child() {
-        return this.child("*");
+        return new X(this.selector + "/*");
     }
 
     public X by(String predicate) {
-        this.locator += "[" + predicate + "]";
-        return this;
+        return new X(this.selector + "[" + predicate + "]");
     }
 
     public X byNot(String predicate) {
-        this.locator += "[not(" + predicate + ")]";
-        return this;
+        return new X(this.selector + "[not(" + predicate + ")]");
     }
 
     public static class Its {
