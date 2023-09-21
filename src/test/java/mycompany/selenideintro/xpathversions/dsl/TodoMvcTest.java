@@ -25,8 +25,8 @@ public class TodoMvcTest {
                 .shouldHave(exactTexts("a", "b", "c"));
 
         $x(X.any().by(Its.id("todo-list")).child("li")
-                .by(Its.descendantText("b")).descendant()
-                .by(Its.cssClass("toggle")).x())
+                .by(Its.descendantText("b"))
+                .descendant().by(Its.cssClass("toggle")).x())
                 .click();
 
         $$x(X.any().by(Its.id("todo-list")).child("li")
