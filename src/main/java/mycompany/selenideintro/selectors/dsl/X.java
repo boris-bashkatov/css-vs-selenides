@@ -1,4 +1,5 @@
-package mycompany.selenideintro.utils.selectors.dsl;
+package mycompany.selenideintro.selectors.dsl;
+
 
 public class X {
     private final String selector;
@@ -7,9 +8,7 @@ public class X {
         this.selector = selector;
     }
 
-
     public static X any() {
-
         return new X("//*");
     }
 
@@ -22,8 +21,7 @@ public class X {
     }
 
     public X descendant() {
-
-        return new X(this.selector + "//*");
+        return new X(descendant("*").selector);
     }
 
     public X child(String element) {
@@ -31,7 +29,7 @@ public class X {
     }
 
     public X child() {
-        return new X(this.selector + "/*");
+        return new X(child("*").selector);
     }
 
     public X by(String predicate) {
@@ -39,7 +37,7 @@ public class X {
     }
 
     public X byNot(String predicate) {
-        return new X(this.selector + "[not(" + predicate + ")]");
+        return new X(by(Its.not(predicate)).selector);
     }
 
     public static class Its {
@@ -54,6 +52,10 @@ public class X {
         public static String cssClass(String name) {
             return "contains(concat(' ', normalize-space(@class), ' '), ' " +
                     name + " ')";
+        }
+
+        public static String not(String predicate) {
+            return "not(" + predicate + ")";
         }
     }
 }

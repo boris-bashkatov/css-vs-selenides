@@ -1,22 +1,17 @@
 package mycompany.selenideintro.xpathversions.dsl;
 
 import com.codeborne.selenide.Configuration;
-import mycompany.selenideintro.utils.selectors.dsl.X;
+import mycompany.selenideintro.selectors.dsl.X;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.exactTexts;
 import static com.codeborne.selenide.Selenide.*;
-import static mycompany.selenideintro.utils.selectors.dsl.X.Its;
-
+import static mycompany.selenideintro.selectors.dsl.X.Its;
 
 public class TodoMvcTest {
-
-
     @Test
     void toDoCompletion() {
-
         Configuration.browser = "firefox";
-//      Configuration.holdBrowserOpen = true;
         open("https://todomvc.com/examples/emberjs/");
         $x(X.any().by(Its.id("new-todo")).x()).append("a").pressEnter();
         $x(X.any().by(Its.id("new-todo")).x()).append("b").pressEnter();
