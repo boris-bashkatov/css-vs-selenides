@@ -1,7 +1,7 @@
 package mycompany.selenideintro.xpathversions.refactoredwithhelpers;
 
 import com.codeborne.selenide.Configuration;
-import mycompany.selenideintro.utils.selectors.forrefactoredversion.Xpath;
+import mycompany.selenideintro.utils.selectors.utils.Xpath;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.exactTexts;

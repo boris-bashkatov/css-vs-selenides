@@ -1,12 +1,12 @@
 package mycompany.selenideintro.xpathversions.dsl;
 
 import com.codeborne.selenide.Configuration;
-import mycompany.selenideintro.utils.selectors.X;
+import mycompany.selenideintro.utils.selectors.dsl.X;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.exactTexts;
 import static com.codeborne.selenide.Selenide.*;
-import static mycompany.selenideintro.utils.selectors.X.Its;
+import static mycompany.selenideintro.utils.selectors.dsl.X.Its;
 
 
 public class TodoMvcTest {
@@ -16,22 +16,24 @@ public class TodoMvcTest {
     void toDoCompletion() {
 
         Configuration.browser = "firefox";
-        Configuration.holdBrowserOpen = true;
+//      Configuration.holdBrowserOpen = true;
         open("https://todomvc.com/examples/emberjs/");
-        X x = new X();
-        $x(x.all().by(Its.id("new-todo")).x()).append("a").pressEnter();
-        $x(x.x()).append("b").pressEnter();
-        $x(x.x()).append("c").pressEnter();
-        x = new X();
-        $$x(x.all().by(Its.id("todo-list")).child("li").x()).shouldHave(exactTexts("a", "b", "c"));
+        $x(X.any().by(Its.id("new-todo")).x()).append("a").pressEnter();
+        $x(X.any().by(Its.id("new-todo")).x()).append("b").pressEnter();
+        $x(X.any().by(Its.id("new-todo")).x()).append("c").pressEnter();
+        $$x(X.any().by(Its.id("todo-list")).child("li").x())
+                .shouldHave(exactTexts("a", "b", "c"));
 
-        x = new X();
-        $x(x.all().by(Its.id("todo-list")).child("li").by(Its.descendantWithText("b")).descendant().by(Its.CssClass("toggle")).x()).click();
+        $x(X.any().by(Its.id("todo-list")).child("li")
+                .by(Its.descendantText("b")).descendant()
+                .by(Its.cssClass("toggle")).x())
+                .click();
 
-        x = new X();
-        $$x(x.all().by(Its.id("todo-list")).child("li").by(Its.noCssClass("completed")).x()).shouldHave(exactTexts("a", "c"));
-        x = new X();
-        $$x(x.all().by(Its.id("todo-list")).child("li").by(Its.CssClass("completed")).x()).shouldHave(exactTexts("b"));
-
+        $$x(X.any().by(Its.id("todo-list")).child("li")
+                .byNot(Its.cssClass("completed")).x())
+                .shouldHave(exactTexts("a", "c"));
+        $$x(X.any().by(Its.id("todo-list")).child("li")
+                .by(Its.cssClass("completed")).x())
+                .shouldHave(exactTexts("b"));
     }
 }
