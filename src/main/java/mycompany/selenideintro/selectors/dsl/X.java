@@ -1,6 +1,5 @@
 package mycompany.selenideintro.selectors.dsl;
 
-
 public class X {
     private final String selector;
 
@@ -21,7 +20,7 @@ public class X {
     }
 
     public X descendant() {
-        return new X(descendant("*").selector);
+        return descendant("*");
     }
 
     public X child(String element) {
@@ -29,16 +28,14 @@ public class X {
     }
 
     public X child() {
-        return new X(child("*").selector);
+        return child("*");
     }
 
     public X by(String predicate) {
         return new X(this.selector + "[" + predicate + "]");
     }
 
-    public X byNot(String predicate) {
-        return new X(by(Its.not(predicate)).selector);
-    }
+    public X byNot(String predicate) { return by(Its.not(predicate)); }
 
     public static class Its {
         public static String id(String name) {

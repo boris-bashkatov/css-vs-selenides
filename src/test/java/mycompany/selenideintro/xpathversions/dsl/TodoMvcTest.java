@@ -1,8 +1,8 @@
 package mycompany.selenideintro.xpathversions.dsl;
 
 import com.codeborne.selenide.Configuration;
-import mycompany.selenideintro.selectors.dsl.X;
 import org.junit.jupiter.api.Test;
+import mycompany.selenideintro.selectors.dsl.X;
 
 import static com.codeborne.selenide.CollectionCondition.exactTexts;
 import static com.codeborne.selenide.Selenide.*;
